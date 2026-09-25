@@ -4,15 +4,22 @@ import { HomePage } from './pages/HomePage';
 import { ListingsPage } from './pages/ListingsPage';
 import { DonatePage } from './pages/DonatePage';
 import { AboutPage } from './pages/AboutPage';
+import { LoginPage } from './pages/LoginPage';
 import { mockListings, mockNotifications } from './data';
-import { Notification, FoodListing, UrgencyLevel } from './types';
-import { ExpiryService, SafetyService, ListingFilterService } from './services';
+import { Notification, FoodListing } from './types';
+import { ExpiryService } from './services';
 import { Leaf } from 'lucide-react';
+
+interface AuthUser {
+  name: string;
+  role: 'donor' | 'recipient';
+}
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
   const [listings, setListings] = useState<FoodListing[]>([]);
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
 
   // Initialize listings with computed properties
   useEffect(() => {
@@ -41,7 +48,7 @@ function App() {
           isSafe: isExpired ? false : listing.isSafe,
         };
       }));
-    }, 5000); // Check every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -55,8 +62,20 @@ function App() {
     setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));
   }, []);
 
+  const handleLogin = useCallback((user: AuthUser) => {
+    setAuthUser(user);
+    setCurrentPage('home');
+  }, []);
+
+  const handleLogout = useCallback(() => {
+    setAuthUser(null);
+    setCurrentPage('home');
+  }, []);
+
   const renderPage = () => {
     switch (currentPage) {
+      case 'login':
+        return <LoginPage onLogin={handleLogin} onNavigate={handleNavigate} />;
       case 'home':
         return <HomePage onNavigate={handleNavigate} />;
       case 'listings':
@@ -77,6 +96,8 @@ function App() {
         onNavigate={handleNavigate}
         notifications={notifications}
         onMarkRead={handleMarkRead}
+        authUser={authUser}
+        onLogout={handleLogout}
       />
       <main className="flex-1">
         {renderPage()}
