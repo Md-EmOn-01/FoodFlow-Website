@@ -17,7 +17,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: 'rgba(255,255,255,0.15)', color: 'white' }}>
-              <Leaf className="w-4 h-4" />
+              <Leaf className="w-4 h-4" style={{ color: 'white' }} />
               <span className="text-sm font-medium">Expiry-Aware Food Donation</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">

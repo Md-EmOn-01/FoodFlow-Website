@@ -241,7 +241,7 @@ export const DonatePage: React.FC = () => {
         {/* Submit */}
         <div className="flex gap-4">
           <button type="submit" className="btn btn-primary btn-lg flex-1">
-            <Leaf className="w-5 h-5" /> Create Listing
+            <Leaf className="w-5 h-5" style={{ color: 'white' }} /> Create Listing
           </button>
         </div>
       </form>

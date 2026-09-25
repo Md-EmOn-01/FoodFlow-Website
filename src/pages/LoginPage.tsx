@@ -77,8 +77,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
           
           <div className="relative">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.2)' }}>
-                <Leaf className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
+                <Leaf className="w-8 h-8" style={{ color: 'white' }} />
               </div>
               <span className="text-2xl font-bold text-white">FoodFlow</span>
             </div>
@@ -115,8 +115,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
         <div className="p-8 sm:p-10">
           {/* Mobile Logo */}
           <div className="flex items-center gap-2 mb-6 lg:hidden">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'var(--green-700)' }}>
-              <Leaf className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md" style={{ background: 'linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 100%)' }}>
+              <Leaf className="w-6 h-6" style={{ color: 'white' }} />
             </div>
             <span className="text-xl font-bold" style={{ color: 'var(--green-700)' }}>FoodFlow</span>
           </div>
