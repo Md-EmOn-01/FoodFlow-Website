@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, CheckCircle } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { FoodFlowLogo } from '../components/FoodFlowLogo';
 
 interface LoginPageProps {
@@ -167,30 +167,24 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
               <div className="grid grid-cols-2 gap-3 animate-fade-in">
                 <div>
                   <label className="form-label">First Name</label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
-                    <input
-                      type="text"
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="form-input pl-10"
-                      placeholder="Rahim"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    className="form-input"
+                    placeholder="Rahim"
+                  />
                   {errors.firstName && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.firstName}</p>}
                 </div>
                 <div>
                   <label className="form-label">Last Name</label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
-                    <input
-                      type="text"
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="form-input pl-10"
-                      placeholder="Ahmed"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    className="form-input"
+                    placeholder="Ahmed"
+                  />
                   {errors.lastName && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.lastName}</p>}
                 </div>
               </div>
@@ -199,16 +193,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             {isSignUp && (
               <div className="animate-fade-in">
                 <label className="form-label">Phone Number</label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="form-input pl-10"
-                    placeholder="+880 1712 345678"
-                  />
-                </div>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="form-input"
+                  placeholder="+880 1712 345678"
+                />
                 {errors.phone && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.phone}</p>}
               </div>
             )}
@@ -216,16 +207,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             {/* Email */}
             <div>
               <label className="form-label">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="form-input pl-10"
-                  placeholder="you@example.com"
-                />
-              </div>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="form-input"
+                placeholder="you@example.com"
+              />
               {errors.email && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.email}</p>}
             </div>
 
@@ -233,12 +221,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             <div>
               <label className="form-label">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="form-input pl-10 pr-10"
+                  className="form-input pr-10"
                   placeholder="••••••••"
                 />
                 <button
@@ -257,16 +244,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             {isSignUp && (
               <div className="animate-fade-in">
                 <label className="form-label">Confirm Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--grey-400)' }} />
-                  <input
-                    type="password"
-                    value={formData.confirmPassword}
-                    onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="form-input pl-10"
-                    placeholder="••••••••"
-                  />
-                </div>
+                <input
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  className="form-input"
+                  placeholder="••••••••"
+                />
                 {errors.confirmPassword && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.confirmPassword}</p>}
               </div>
             )}
