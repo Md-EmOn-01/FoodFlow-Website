@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { User, Mail, Lock, Phone, Heart, Package } from 'lucide-react';
 
 import { FoodFlowLogo } from '../components/FoodFlowLogo';
 
@@ -90,14 +91,16 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
           <div className="relative space-y-4 mt-8">
             {[
-              'Real-time expiry tracking keeps food safe',
-              'Secure pickup codes prevent fraud',
-              'Instant notifications for urgent listings',
-              'Verified donors and recipients you can trust',
-            ].map((text, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: 'rgba(255,255,255,0.6)' }}></div>
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.9)' }}>{text}</span>
+              { icon: '⏰', text: 'Real-time expiry tracking keeps food safe' },
+              { icon: '🔐', text: 'Secure pickup codes prevent fraud' },
+              { icon: '🔔', text: 'Instant notifications for urgent listings' },
+              { icon: '✓', text: 'Verified donors and recipients you can trust' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.15)' }}>
+                  <span className="text-base">{item.icon}</span>
+                </div>
+                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.9)' }}>{item.text}</span>
               </div>
             ))}
           </div>
@@ -132,30 +135,32 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             <button
               type="button"
               onClick={() => setFormData({ ...formData, role: 'recipient' })}
-              className="p-3 rounded-xl text-center transition-all"
+              className="p-4 rounded-xl text-center transition-all"
               style={{
                 background: formData.role === 'recipient' ? 'var(--green-50)' : 'var(--grey-50)',
                 border: `2px solid ${formData.role === 'recipient' ? 'var(--green-500)' : 'var(--grey-200)'}`,
               }}
             >
-              <span className="text-sm font-semibold" style={{ color: formData.role === 'recipient' ? 'var(--green-700)' : 'var(--grey-700)' }}>
+              <Heart className="w-6 h-6 mx-auto mb-2" style={{ color: formData.role === 'recipient' ? 'var(--green-700)' : 'var(--grey-400)' }} />
+              <span className="text-sm font-semibold block" style={{ color: formData.role === 'recipient' ? 'var(--green-700)' : 'var(--grey-700)' }}>
                 I need food
               </span>
-              <span className="text-xs block" style={{ color: 'var(--grey-500)' }}>Recipient</span>
+              <span className="text-xs block mt-0.5" style={{ color: 'var(--grey-500)' }}>Recipient</span>
             </button>
             <button
               type="button"
               onClick={() => setFormData({ ...formData, role: 'donor' })}
-              className="p-3 rounded-xl text-center transition-all"
+              className="p-4 rounded-xl text-center transition-all"
               style={{
                 background: formData.role === 'donor' ? 'var(--green-50)' : 'var(--grey-50)',
                 border: `2px solid ${formData.role === 'donor' ? 'var(--green-500)' : 'var(--grey-200)'}`,
               }}
             >
-              <span className="text-sm font-semibold" style={{ color: formData.role === 'donor' ? 'var(--green-700)' : 'var(--grey-700)' }}>
+              <Package className="w-6 h-6 mx-auto mb-2" style={{ color: formData.role === 'donor' ? 'var(--green-700)' : 'var(--grey-400)' }} />
+              <span className="text-sm font-semibold block" style={{ color: formData.role === 'donor' ? 'var(--green-700)' : 'var(--grey-700)' }}>
                 I have food
               </span>
-              <span className="text-xs block" style={{ color: 'var(--grey-500)' }}>Donor</span>
+              <span className="text-xs block mt-0.5" style={{ color: 'var(--grey-500)' }}>Donor</span>
             </button>
           </div>
 
@@ -164,7 +169,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             {isSignUp && (
               <div className="grid grid-cols-2 gap-3 animate-fade-in">
                 <div>
-                  <label className="form-label">First Name</label>
+                  <label className="form-label flex items-center gap-1.5">
+                    <User className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                    First Name
+                  </label>
                   <input
                     type="text"
                     value={formData.firstName}
@@ -175,7 +183,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
                   {errors.firstName && <p className="text-xs mt-1" style={{ color: 'var(--red-600)' }}>{errors.firstName}</p>}
                 </div>
                 <div>
-                  <label className="form-label">Last Name</label>
+                  <label className="form-label flex items-center gap-1.5">
+                    <User className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     value={formData.lastName}
@@ -190,7 +201,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
             {isSignUp && (
               <div className="animate-fade-in">
-                <label className="form-label">Phone Number</label>
+                <label className="form-label flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   value={formData.phone}
@@ -204,7 +218,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
             {/* Email */}
             <div>
-              <label className="form-label">Email Address</label>
+              <label className="form-label flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                Email Address
+              </label>
               <input
                 type="email"
                 value={formData.email}
@@ -217,7 +234,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
             {/* Password */}
             <div>
-              <label className="form-label">Password</label>
+              <label className="form-label flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                Password
+              </label>
               <div className="relative">
                 <input
                   type="password"
@@ -233,7 +253,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
             {/* Confirm Password (Sign Up only) */}
             {isSignUp && (
               <div className="animate-fade-in">
-                <label className="form-label">Confirm Password</label>
+                <label className="form-label flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5" style={{ color: 'var(--grey-500)' }} />
+                  Confirm Password
+                </label>
                 <input
                   type="password"
                   value={formData.confirmPassword}
