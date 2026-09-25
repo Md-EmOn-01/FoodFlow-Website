@@ -8,7 +8,7 @@ import { LoginPage } from './pages/LoginPage';
 import { mockListings, mockNotifications } from './data';
 import { Notification, FoodListing } from './types';
 import { ExpiryService } from './services';
-import { Leaf } from 'lucide-react';
+import { FoodFlowLogo } from './components/FoodFlowLogo';
 
 interface AuthUser {
   name: string;
@@ -105,12 +105,7 @@ function App() {
       <footer className="py-8 mt-auto" style={{ background: 'var(--surface)', borderTop: '1px solid var(--grey-200)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 100%)' }}>
-                <Leaf className="w-5 h-5" style={{ color: 'white' }} />
-              </div>
-              <span className="font-bold" style={{ color: 'var(--green-700)' }}>FoodFlow</span>
-            </div>
+            <FoodFlowLogo size="sm" />
             <p className="text-sm" style={{ color: 'var(--grey-500)' }}>
               © 2025 FoodFlow — Expiry-Aware Food Donation Platform. Built with ❤️ for zero waste.
             </p>

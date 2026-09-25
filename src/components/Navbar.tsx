@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Bell, Menu, X, Leaf, User, LogOut, ChevronDown } from 'lucide-react';
+import { Bell, Menu, X, User, LogOut, ChevronDown } from 'lucide-react';
+import { FoodFlowLogo } from './FoodFlowLogo';
 import { Notification } from '../types';
 
 interface AuthUser {
@@ -34,11 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, notific
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => onNavigate('home')}>
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md" style={{ background: 'linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 100%)' }}>
-              <Leaf className="w-6 h-6" style={{ color: 'white' }} />
-            </div>
-            <span className="text-xl font-bold" style={{ color: 'var(--green-700)' }}>FoodFlow</span>
+          <div className="cursor-pointer" onClick={() => onNavigate('home')}>
+            <FoodFlowLogo size="md" />
           </div>
 
           {/* Desktop Nav */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafetyService } from '../services';
-import { CheckCircle, AlertCircle, Leaf, MapPin, Package, Clock } from 'lucide-react';
+import { CheckCircle, AlertCircle, MapPin, Package, Clock } from 'lucide-react';
+import { FoodFlowLogo } from '../components/FoodFlowLogo';
 
 export const DonatePage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -196,7 +197,7 @@ export const DonatePage: React.FC = () => {
         {/* Safety Check */}
         <div className="p-6 rounded-2xl" style={{ background: 'var(--surface)', boxShadow: 'var(--shadow-md)' }}>
           <div className="flex items-center gap-2 mb-4">
-            <Leaf className="w-5 h-5" style={{ color: 'var(--green-700)' }} />
+            <CheckCircle className="w-5 h-5" style={{ color: 'var(--green-700)' }} />
             <h2 className="text-lg font-bold" style={{ color: 'var(--ink)' }}>Safety Validation</h2>
           </div>
 
@@ -241,7 +242,7 @@ export const DonatePage: React.FC = () => {
         {/* Submit */}
         <div className="flex gap-4">
           <button type="submit" className="btn btn-primary btn-lg flex-1">
-            <Leaf className="w-5 h-5" style={{ color: 'white' }} /> Create Listing
+            <FoodFlowLogo size="sm" variant="white" showText={false} /> Create Listing
           </button>
         </div>
       </form>

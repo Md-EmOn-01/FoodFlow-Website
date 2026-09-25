@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Leaf, Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, Lock, User, Phone, Eye, EyeOff, ArrowRight, CheckCircle } from 'lucide-react';
+import { FoodFlowLogo } from '../components/FoodFlowLogo';
 
 interface LoginPageProps {
   onLogin: (user: { name: string; role: 'donor' | 'recipient' }) => void;
@@ -76,11 +77,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
           </div>
           
           <div className="relative">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
-                <Leaf className="w-8 h-8" style={{ color: 'white' }} />
-              </div>
-              <span className="text-2xl font-bold text-white">FoodFlow</span>
+            <div className="mb-8">
+              <FoodFlowLogo size="lg" variant="white" />
             </div>
             <h2 className="text-3xl font-bold text-white leading-tight mb-4">
               Join the movement against food waste.
@@ -113,12 +111,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
         {/* Right Panel - Form */}
         <div className="p-8 sm:p-10">
-          {/* Mobile Logo */}
-          <div className="flex items-center gap-2 mb-6 lg:hidden">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md" style={{ background: 'linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 100%)' }}>
-              <Leaf className="w-6 h-6" style={{ color: 'white' }} />
-            </div>
-            <span className="text-xl font-bold" style={{ color: 'var(--green-700)' }}>FoodFlow</span>
+          {/* Logo */}
+          <div className="mb-6">
+            <FoodFlowLogo size="md" />
           </div>
 
           <div className="mb-8">
