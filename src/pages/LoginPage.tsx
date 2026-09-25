@@ -104,7 +104,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => 
 
           <div className="relative">
             <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              © 2025 FoodFlow. All rights reserved.
+              © 2026 FoodFlow. All rights reserved.
             </p>
           </div>
         </div>

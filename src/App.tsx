@@ -107,7 +107,7 @@ function App() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <FoodFlowLogo size="sm" />
             <p className="text-sm" style={{ color: 'var(--grey-500)' }}>
-              © 2025 FoodFlow — Expiry-Aware Food Donation Platform. Built with ❤️ for zero waste.
+              © 2026 — Expiry-Aware Food Donation Platform. Built with ❤️ for zero waste.
             </p>
             <div className="flex gap-4 text-sm" style={{ color: 'var(--grey-500)' }}>
               <button onClick={() => handleNavigate('about')} className="hover:underline">About</button>
