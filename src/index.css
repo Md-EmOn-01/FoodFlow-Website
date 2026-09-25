@@ -1,1 +1,419 @@
 @import "tailwindcss";
+
+/* ============================================
+   FoodFlow Design System - CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* Brand / Primary */
+  --green-700: #1E6B54;
+  --green-600: #27856a;
+  --green-500: #2F9E7D;
+  --green-400: #48BB78;
+  --green-100: #C6F6D5;
+  --green-50: #EDF5F2;
+
+  /* Surfaces */
+  --surface: #FFFFFF;
+  --surface-raised: #F7FAFC;
+  --surface-muted: #EDF2F7;
+
+  /* Urgency Colors */
+  --amber-600: #B7791F;
+  --amber-500: #D69E2E;
+  --amber-100: #FEFCBF;
+  --amber-50: #FFFFF0;
+
+  --red-600: #C53030;
+  --red-500: #E53E3E;
+  --red-100: #FED7D7;
+  --red-50: #FFF5F5;
+
+  --blue-600: #2B6CB0;
+  --blue-100: #BEE3F8;
+
+  /* Text / Neutral */
+  --ink: #1A202C;
+  --grey-700: #4A5568;
+  --grey-500: #718096;
+  --grey-400: #A0AEC0;
+  --grey-300: #CBD5E0;
+  --grey-200: #E2E8F0;
+  --grey-100: #EDF2F7;
+  --grey-50: #F7FAFC;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  background-color: var(--grey-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+.countdown-timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* ============================================
+   Urgency States (CRITICAL: Never color alone)
+   ============================================ */
+
+/* SAFE state */
+.listing-card--safe {
+  border-left: 4px solid var(--green-500);
+  background: var(--surface);
+}
+
+.badge-available {
+  background-color: var(--green-50);
+  color: var(--green-700);
+  border: 1px solid var(--green-400);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* WARNING state */
+.listing-card--warning {
+  border-left: 4px solid var(--amber-500);
+  background: var(--amber-50);
+}
+
+.badge-warning {
+  background-color: var(--amber-100);
+  color: var(--amber-600);
+  border: 1px solid var(--amber-500);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timer--warning {
+  color: var(--amber-600);
+}
+
+/* URGENT state - pinned to top */
+.listing-card--urgent {
+  border-left: 4px solid var(--red-500);
+  background: var(--red-50);
+  box-shadow: 0 0 0 1px var(--red-100), var(--shadow-md);
+}
+
+.badge-urgent {
+  background-color: var(--red-100);
+  color: var(--red-600);
+  border: 1px solid var(--red-500);
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse-urgent 2s infinite;
+}
+
+.timer--urgent {
+  color: var(--red-600);
+  font-weight: 700;
+}
+
+@keyframes pulse-urgent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* EXPIRED state */
+.listing-card--expired {
+  opacity: 0.55;
+  pointer-events: none;
+  border-left: 4px solid var(--grey-300);
+  background: var(--grey-100);
+}
+
+.listing-card--expired .listing-name {
+  text-decoration: line-through;
+  color: var(--grey-500);
+}
+
+.listing-card--expired .listing-description {
+  text-decoration: line-through;
+}
+
+.badge-expired {
+  background-color: var(--grey-200);
+  color: var(--grey-500);
+  border: 1px solid var(--grey-300);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: line-through;
+}
+
+/* BLOCKED state */
+.listing-card--blocked {
+  opacity: 0.55;
+  pointer-events: none;
+  border-left: 4px solid var(--red-600);
+  background: var(--grey-100);
+}
+
+.badge-blocked {
+  background-color: var(--red-100);
+  color: var(--red-600);
+  border: 1px solid var(--red-500);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Responsive Grid Layout
+   ============================================ */
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .listings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .listings-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   Card Base
+   ============================================ */
+
+.listing-card {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.listing-card:not(.listing-card--expired):not(.listing-card--blocked):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--green-700);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-600);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--green-700);
+  border: 2px solid var(--green-700);
+}
+
+.btn-secondary:hover {
+  background-color: var(--green-50);
+}
+
+.btn-danger {
+  background-color: var(--red-600);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #9B2C2C;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+/* Mobile thumb-reach buttons */
+@media (max-width: 639px) {
+  .btn {
+    padding: 0.875rem 1.5rem;
+    min-height: 48px;
+  }
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+
+.nav-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--grey-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   Form Styles
+   ============================================ */
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--grey-200);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+  background: var(--surface);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(47, 158, 125, 0.1);
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--grey-700);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* ============================================
+   Notification Badge
+   ============================================ */
+
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--red-500);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--grey-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--grey-400);
+}
